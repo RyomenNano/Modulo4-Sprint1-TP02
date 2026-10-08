@@ -4,7 +4,7 @@ import ButtonFuction from '../../components/Button'
 const Header = ({ setOpen }) => {
   return (
     <>
-      <header className="flex justify-between items-center px-10 py-5 bg-zinc-950 text-stone-100 border-b border-rose-950 shadow-lg">
+      <header className="flex justify-between items-center px-10 py-5 bg-momos text-stone-100 border-b border-rose-950 shadow-lg">
       
       <div className="flex items-center gap-3">
 

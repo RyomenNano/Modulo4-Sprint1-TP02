@@ -3,6 +3,7 @@ import './App.css'
 import Header from './components/layout/Header'
 import Main from './components/layout/Main'
 import Footer from './components/layout/Footer'
+import Contador from './pruebas/Contador'
 
 function App() {
 
@@ -18,9 +19,16 @@ function App() {
     }
   }) // Lista de películas en watchlist
 
+  const [busqueda, setBusqueda] = useState('') 
+  console.log(busqueda);
+
   const removeMovie = (id) => {
     const updated = movies.filter(movie => movie.id !== id)
     setMovies(updated)
+  }
+
+  const vaciarLista = () => {
+    setMovies([])
   }
 
   useEffect(() => {
@@ -30,12 +38,26 @@ function App() {
   return (
     <>
       <div className='min-h-screen flex flex-col'>
-        <Header setOpen={setOpen} />
-        <Main setOpen={setOpen} open={open} movies={movies} setMovies={setMovies} removeMovie={removeMovie} />
+        <Header 
+          setOpen={setOpen} />
+        <Main 
+          open={open} 
+          setOpen={setOpen} 
+          movies={movies} 
+          setMovies={setMovies} 
+          removeMovie={removeMovie}
+          vaciarLista={vaciarLista} 
+          busqueda={busqueda} 
+          setBusqueda={setBusqueda} />
         <Footer />
+      </div>
+      <div>
+        <Contador />
       </div>
     </>
   )
 }
+
+
 
 export default App

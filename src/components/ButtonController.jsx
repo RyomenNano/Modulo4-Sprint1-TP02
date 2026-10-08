@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ButtonController = (opcion, movie,  setOpen, setMovies, removeMovie ) => {
+const ButtonController = (opcion, movie,  setOpen, setMovies, removeMovie, vaciarLista ) => {
 
     switch (opcion) {
 
@@ -16,6 +16,10 @@ const ButtonController = (opcion, movie,  setOpen, setMovies, removeMovie ) => {
         
         case 'alternarModal':
             setOpen(prev => !prev);
+            break
+        
+        case 'vaciarLista':
+            vaciarLista();
             break
 
         default:

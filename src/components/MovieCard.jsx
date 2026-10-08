@@ -1,15 +1,9 @@
 import React from 'react' 
 import ButtonFunction from '../components/Button'
  
-const MovieCard = ({movies, setMovies, peliculasAlmacenadas}) => { 
-  console.log(movies);
+const MovieCard = ({setMovies, movie}) => { 
 return ( 
-  <> 
-    <div className="max-w-7xl mx-auto px-6 py-10"> 
-      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4"> 
- 
-        {peliculasAlmacenadas.map((movie) => ( 
-         
+  <>   
          <div key={movie.id} className="bg-[radial-gradient(circle_at_center,_#3f3f46,_#18181b_75%)] rounded-xl p-4 flex flex-col items-center"> 
             <img src={movie.image} className="rounded-lg w-full h-[320px] object-cover"/> 
  
@@ -22,10 +16,7 @@ return (
                
               </div> 
           </div> 
-        ))} 
- 
-      </div> 
-    </div> 
+
   </> 
 ) 
 } 

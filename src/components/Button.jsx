@@ -1,12 +1,12 @@
 import React from 'react'
 import ButtonController  from '../components/ButtonController'
 
-const ButtonFunction = ({ texto, opcion, movie, removeMovie, setOpen, styles, setMovies }) => {
+const ButtonFunction = ({ texto, opcion, movie, removeMovie, vaciarLista, setOpen, styles, setMovies }) => {
   return (
     <>
         <button className={styles}
         onClick={() => {
-            return ButtonController(opcion, movie, setOpen, setMovies, removeMovie)
+            return ButtonController(opcion, movie, setOpen, setMovies, removeMovie, vaciarLista)
         }} 
         >
           {texto}
