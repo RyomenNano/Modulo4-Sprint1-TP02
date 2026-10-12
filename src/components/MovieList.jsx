@@ -1,8 +1,7 @@
 import React from 'react'
 import MovieCard from './MovieCard'
-import {peliculasAlmacenadas} from '../consts/movies'
 
-const MovieList = ({setMovies, busqueda}) => {
+const MovieList = ({movies, setMovies, busqueda, peliculasAlmacenadas}) => {
 
   return (
     <>
@@ -10,7 +9,7 @@ const MovieList = ({setMovies, busqueda}) => {
       <div className="max-w-7xl mx-auto px-6 py-10"> 
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
 
-          {peliculasAlmacenadas.filter((movie) => movie.title.toLowerCase().includes(busqueda.toLowerCase())).map((movie) => (<MovieCard setMovies={setMovies} movie={movie}/>))}
+          {peliculasAlmacenadas.filter((movie) => movie.title.toLowerCase().includes(busqueda.toLowerCase())).sort((a, b) => Number(b.nuevo) - Number(a.nuevo)).map((movie) => (<MovieCard key={movie.id} setMovies={setMovies} movie={movie} movies={movies}/>))}
           
         </div>
       </div>

@@ -4,20 +4,14 @@ import Header from './components/layout/Header'
 import Main from './components/layout/Main'
 import Footer from './components/layout/Footer'
 import Contador from './pruebas/Contador'
+import {peliculasAlmacenadas} from './data/movies'
+import useLocalStorage from './hooks/useLocalStorage'
 
 function App() {
 
   const [open, setOpen] = useState(false) // Variable para controlar si el menú lateral está abierto o cerrado
 
-  const [movies, setMovies] = useState(() => {
-    try {
-      const stored = localStorage.getItem("watchlist")
-      return stored ? JSON.parse(stored) : []
-    } catch (error) {
-      console.error("Error reading watchlist from localStorage:", error)
-      return []
-    }
-  }) // Lista de películas en watchlist
+  const [movies, setMovies] = useLocalStorage('watchlist', []) // Variable para almacenar la lista de películas en el almacenamiento local
 
   const [busqueda, setBusqueda] = useState('') 
   console.log(busqueda);
@@ -32,14 +26,17 @@ function App() {
   }
 
   useEffect(() => {
-    localStorage.setItem("watchlist", JSON.stringify(movies))
-  }, [movies]) // Guardar la lista de películas en el almacenamiento local cada vez que cambie
+  document.title = movies.length > 0
+    ? `Mi lista (${movies.length}) | Movies`
+    : 'Movies'
+}, [movies])
 
   return (
     <>
       <div className='min-h-screen flex flex-col'>
         <Header 
-          setOpen={setOpen} />
+          setOpen={setOpen}
+          movies={movies} />
         <Main 
           open={open} 
           setOpen={setOpen} 
@@ -47,7 +44,8 @@ function App() {
           setMovies={setMovies} 
           removeMovie={removeMovie}
           vaciarLista={vaciarLista} 
-          busqueda={busqueda} 
+          busqueda={busqueda}
+          peliculasAlmacenadas={peliculasAlmacenadas}
           setBusqueda={setBusqueda} />
         <Footer />
       </div>

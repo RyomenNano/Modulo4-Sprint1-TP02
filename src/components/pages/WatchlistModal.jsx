@@ -31,7 +31,7 @@ const WatchlistModal = ({ setOpen, movies, removeMovie, vaciarLista }) => {
 
               <ButtonFunction 
                 texto="remove" 
-                opcion="removeMovie" 
+                opcion="removeMovieModal" 
                 movie={movie} 
                 removeMovie={removeMovie} 
                 styles="bg-rose-800 px-4 py-1.5 rounded-lg text-sm text-white hover:bg-rose-600 transition"/>

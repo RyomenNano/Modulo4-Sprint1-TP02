@@ -1,7 +1,7 @@
 import React from 'react'
 import ButtonFuction from '../../components/Button'
 
-const Header = ({ setOpen }) => {
+const Header = ({ setOpen, movies }) => {
   return (
     <>
       <header className="flex justify-between items-center px-10 py-5 bg-momos text-stone-100 border-b border-rose-950 shadow-lg">
@@ -16,7 +16,7 @@ const Header = ({ setOpen }) => {
       <p className="text-xs text-stone-400">YOUR WATCHLIST</p>
       </div>
       
-      <ButtonFuction texto="Watchlist" opcion="alternarModal" setOpen={setOpen} styles="px-6 py-2.5 rounded-xl border border-rose-500/50 bg-white/5 text-stone-200 font-semibold backdrop-blur-sm hover:bg-rose-500/15 hover:border-rose-400 hover:text-white transition duration-300"/>
+      <ButtonFuction texto={movies.length > 0 ? `Watchlist: ("${movies.length}")` : "Watchlist"} opcion="alternarModal" setOpen={setOpen} styles="px-6 py-2.5 rounded-xl border border-rose-500/50 bg-white/5 text-stone-200 font-semibold backdrop-blur-sm hover:bg-rose-500/15 hover:border-rose-400 hover:text-white transition duration-300"/>
 
   </header>
 </>

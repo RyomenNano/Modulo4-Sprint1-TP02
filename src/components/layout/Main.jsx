@@ -2,7 +2,7 @@ import React from 'react'
 import MovieList from '../MovieList'
 import WatchlistModal from '../pages/WatchlistModal'
 
-const Main = ({ open, setOpen, movies, setMovies, removeMovie, vaciarLista, busqueda, setBusqueda }) => {
+const Main = ({ open, setOpen, movies, setMovies, removeMovie, vaciarLista, busqueda, setBusqueda, peliculasAlmacenadas }) => {
   return (
     <>
     <main className="bg-gradient-to-b from-zinc-900 via-neutral-950 to-black min-h-screen">
@@ -16,9 +16,11 @@ const Main = ({ open, setOpen, movies, setMovies, removeMovie, vaciarLista, busq
           />
         </div>
         <div className='flex items-center justify-center'>
-            <MovieList 
+            <MovieList
+            movies={movies} 
             setMovies={setMovies} 
-            busqueda={busqueda} />
+            busqueda={busqueda} 
+            peliculasAlmacenadas={peliculasAlmacenadas} />
             <div 
               className={`fixed inset-0 bg-black/50 flex justify-center items-center z-50 transition-opacity 
               ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
