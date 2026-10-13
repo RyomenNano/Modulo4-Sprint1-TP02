@@ -1,30 +1,32 @@
 import { useState, useEffect } from "react";
 
-function useLocalStorage(key, initialValue) {
+function useLocalStorage(watchlist, initialValue) {
     const [valor, setValor] = useState(() => {
         try {
-        const almacenado = localStorage.getItem(key)
+        const almacenado = localStorage.getItem(watchlist)
         return almacenado !== null
             ? JSON.parse(almacenado)
             : initialValue
-        } catch (error) {
-        console.error('Error al leer localStorage:', error)
-        return initialValue
+        } 
+        
+        catch (error) {
+            console.error('Error al leer localStorage:', error)
+            return initialValue
         }
     })
 
     useEffect(() => {
         try {
-        if (valor.length > 0) {
-            localStorage.setItem(key, JSON.stringify(valor))
+        if (valor !== null) {
+            localStorage.setItem(watchlist, JSON.stringify(valor))
             
         } else {
-            localStorage.removeItem(key)
+            localStorage.removeItem(watchlist)
         }
         } catch (error) {
         console.error('Error al guardar en localStorage:', error)
         }
-    }, [key, valor])
+    }, [watchlist, valor])
 
     return [valor, setValor]
 }

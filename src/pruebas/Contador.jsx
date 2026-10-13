@@ -1,5 +1,5 @@
 import React from 'react'
-import { ContadorProvider } from '../context/ContadorContext'
+import { ContadorProvider } from './context/ContadorContext'
 import ContadorCuenta from './ContadorCuenta'
 import ContadorControler from './ContadorController'
 

@@ -1,5 +1,5 @@
 import {createContext} from "react";
-import useContador from "../hooks/useContador";
+import useContador from "../../hooks/useContador";
 import { useContext } from "react";
 
 const ContadorContext = createContext();

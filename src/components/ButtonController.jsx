@@ -1,21 +1,15 @@
 import React from 'react'
 
-const ButtonController = (opcion, movie,  setOpen, setMovies, removeMovie, vaciarLista) => {
+const ButtonController = (opcion, movie,  setOpen, movieToggle, removeMovie, vaciarLista) => {
 
     switch (opcion) {
 
         case 'removeMovieModal':
-                removeMovie(movie.id)
+            removeMovie(movie.id)
             break
 
         case 'movieToggle':
-            setMovies(prev => {
-                const exists = prev.some(m => m.id === movie.id)
-                if (exists) {
-                    return prev.filter(m => m.id !== movie.id)
-                }
-                return [...prev, movie]
-            })
+            movieToggle(movie)
             break
         
         case 'alternarModal':

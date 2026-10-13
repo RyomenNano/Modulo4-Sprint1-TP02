@@ -1,4 +1,4 @@
-import {useContadorContext} from '../context/ContadorContext'
+import {useContadorContext} from './context/ContadorContext'
 
 function ContadorController() {
     const { HandleIncrement, HandleDecrement, HandleReset } = useContadorContext();

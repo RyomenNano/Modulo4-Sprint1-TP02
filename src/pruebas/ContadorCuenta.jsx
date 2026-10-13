@@ -1,5 +1,5 @@
 import React from 'react'
-import {useContadorContext} from '../context/ContadorContext'
+import {useContadorContext} from './context/ContadorContext'
 
 function ContadorCuenta() {
     const { count } = useContadorContext();
