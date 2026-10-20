@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 
-function useLocalStorage(watchlist, initialValue) {
+function useLocalStorage(key, initialValue) {
     const [valor, setValor] = useState(() => {
+
         try {
-        const almacenado = localStorage.getItem(watchlist)
-        return almacenado !== null
-            ? JSON.parse(almacenado)
-            : initialValue
+        const almacenado = localStorage.getItem(key)
+        return almacenado !== null ? JSON.parse(almacenado) : initialValue
         } 
         
         catch (error) {
@@ -17,27 +16,37 @@ function useLocalStorage(watchlist, initialValue) {
 
     useEffect(() => {
         try {
-        if (valor.length > 0) {
-            localStorage.setItem(watchlist, JSON.stringify(valor))
-            
-        } else {
-            localStorage.removeItem(watchlist)
+            if (Array.isArray(valor)){
+                if (valor.length > 0) {
+                    localStorage.setItem(key, JSON.stringify(valor))
+                }
+                else 
+                    {localStorage.removeItem(key)}}
+
+            else{
+                if (valor !== null && valor !== undefined) {
+                    localStorage.setItem(key, JSON.stringify(valor))
+                }
+                else 
+                    {localStorage.removeItem(key)}}
+
         }
-        } catch (error) {
-        console.error('Error al guardar en localStorage:', error)
+        catch (error){ console.error('Error al guardar en localStorage:', error)
         }
-    }, [watchlist, valor])
+    }, [key, valor])
 
     useEffect(() => {
         const sincronizar = (e) => {
-            if (e.key !== watchlist) return
+            if (e.key !== key){
+                return }
+            
             setValor(e.newValue === null ? initialValue : JSON.parse(e.newValue))
         }
 
         window.addEventListener('storage', sincronizar)
         
         return () => window.removeEventListener('storage', sincronizar)
-    }, [watchlist, initialValue])
+    }, [key, initialValue])
 
     return [valor, setValor]
 }
