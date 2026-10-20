@@ -11,10 +11,11 @@ function useMyList(){
 
     const vaciarLista = () => {
         setMovies([])
+        localStorage.removeItem('watchlist')
     }
 
     const movieToggle = (movie) => {
-        setMovies(prev => {
+        setMovies((prev) => {
             const exists = prev.some(m => m.id === movie.id)
             if (exists) {
                 return prev.filter(m => m.id !== movie.id)

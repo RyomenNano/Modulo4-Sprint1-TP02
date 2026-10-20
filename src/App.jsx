@@ -7,6 +7,7 @@ import useMyList from './hooks/useMyList'
 import usePanel from './hooks/usePanel'
 import useBuscador from './hooks/useBuscador'
 import useContTitle from './hooks/useContTitle'
+import usePaginacion from './hooks/usePaginacion'
 import Contador from './pruebas/Contador'
 
 function App() {
@@ -15,7 +16,9 @@ function App() {
 
   const {busqueda, setBusqueda} = useBuscador()
 
-  const {open, setOpen} = usePanel(movies)
+  const paginacion = usePaginacion(busqueda)
+
+  const panel = usePanel(movies)
 
   useContTitle(movies, "Movies")
 
@@ -23,18 +26,18 @@ function App() {
     <>
       <div className='min-h-screen flex flex-col'>
         <Header 
-          setOpen={setOpen}
-          movies={movies} />
+          movies={movies}
+          panel={panel} />
         <Main 
-          open={open} 
-          setOpen={setOpen} 
+          panel={panel} 
           movies={movies} 
           movieToggle={movieToggle} 
           removeMovie={removeMovie}
           vaciarLista={vaciarLista} 
           busqueda={busqueda}
           peliculasAlmacenadas={peliculasAlmacenadas}
-          setBusqueda={setBusqueda} />
+          setBusqueda={setBusqueda}
+          paginacion={paginacion} />
         <Footer />
       </div>
       <div>

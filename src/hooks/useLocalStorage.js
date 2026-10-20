@@ -17,7 +17,7 @@ function useLocalStorage(watchlist, initialValue) {
 
     useEffect(() => {
         try {
-        if (valor !== null) {
+        if (valor.length > 0) {
             localStorage.setItem(watchlist, JSON.stringify(valor))
             
         } else {
@@ -27,6 +27,17 @@ function useLocalStorage(watchlist, initialValue) {
         console.error('Error al guardar en localStorage:', error)
         }
     }, [watchlist, valor])
+
+    useEffect(() => {
+        const sincronizar = (e) => {
+            if (e.key !== watchlist) return
+            setValor(e.newValue === null ? initialValue : JSON.parse(e.newValue))
+        }
+
+        window.addEventListener('storage', sincronizar)
+        
+        return () => window.removeEventListener('storage', sincronizar)
+    }, [watchlist, initialValue])
 
     return [valor, setValor]
 }

@@ -1,33 +1,50 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ButtonFunction from '../../components/Button'
 
 const WatchlistModal = ({ setOpen, movies, removeMovie, vaciarLista }) => {
 
+  useEffect(() => {
+
+  const manejarTecla = (event) => {
+    if (event.key === 'Escape') {
+      setOpen(false)
+    }
+
+    console.log('Tecla presionada:', event.key)
+  }
+
+  window.addEventListener('keydown', manejarTecla)
+
+  return () => {
+    window.removeEventListener('keydown', manejarTecla)
+  }
+}, [setOpen])
+
   return (
-<div className="bg-zinc-950 text-stone-100 rounded-2xl w-[90%] max-w-5xl shadow-2xl border border-rose-900/40"> 
-      <div className="flex justify-between items-center p-5 border-b border-rose-900/40"> 
+<div className="bg-surface text-foreground rounded-2xl w-[90%] max-w-5xl shadow-2xl border border-brand-strong/40"> 
+      <div className="flex justify-between items-center p-5 border-b border-brand-strong/40"> 
  
         <h2 className="font-bold text-xl tracking-wide"> My Watchlist</h2> 
 
-        <ButtonFunction texto="Cerrar" opcion="alternarModal" setOpen={setOpen} styles=" aria-label text-stone-400 hover:text-rose-400 text-xl transition"/>
+        <ButtonFunction texto="Cerrar" opcion="alternarModal" setOpen={setOpen} styles="text-foreground-muted hover:text-brand-hover text-xl transition"/>
 
       </div> 
 
       <ButtonFunction 
                 texto="vaciar" 
                 opcion="vaciarLista" 
-                vaciarLista={vaciarLista} 
-                styles="float-right mt-5 mr-4 mb-2 bg-rose-900/70 border border-rose-700/60 px-5 py-2 rounded-md text-sm text-rose-100 hover:bg-rose-700 hover:border-rose-500 transition duration-200"/>
+                vaciarLista={vaciarLista}  
+                styles="float-right mt-5 mr-4 mb-2 bg-brand-strong/70 border border-brand/60 px-5 py-2 rounded-md text-sm text-brand-pale hover:bg-brand-hover hover:border-brand-hover transition duration-200"/>
    
       <div className="p-5 space-y-4 h-[750px] overflow-y-auto"> 
    
         {movies.length == 0 ?
         <div className="flex flex-col items-center justify-center py-20 text-center">
-          <i className="bi bi-film text-5xl text-rose-900/80 mb-4">
-          <p className="text-lg font-semibold text-stone-300">
+          <i className="bi bi-film text-5xl text-brand-strong/80 mb-4">
+          <p className="text-lg font-semibold text-foreground-soft">
             Tu lista está vacía
           </p>
-          <p className="text-sm text-stone-500 mt-2">
+          <p className="text-sm text-foreground-subtle mt-2">
             Agregá películas para verlas aparecer acá.
           </p>
           </i>
@@ -35,11 +52,11 @@ const WatchlistModal = ({ setOpen, movies, removeMovie, vaciarLista }) => {
         
         
         : ( movies.map((movie) => ( 
-            <div key={movie.id} className="flex items-center justify-between bg-[radial-gradient(circle_at_center,_#3f3035,_#18181b_75%)] p-4 rounded-xl border border-rose-900/50"> 
+            <div key={movie.id} className="watchlist-item-bg flex items-center justify-between p-4 rounded-xl border border-brand-strong/50"> 
                
               <div className="flex items-center gap-4"> 
                 <img src={movie.image} alt={movie.title} className="w-24 h-32 object-cover rounded"/> 
-                <p className="font-medium text-stone-200">{movie.title}</p> 
+                <p className="font-medium text-foreground-strong">{movie.title}</p> 
               </div> 
 
               <ButtonFunction 
@@ -47,7 +64,7 @@ const WatchlistModal = ({ setOpen, movies, removeMovie, vaciarLista }) => {
                 opcion="removeMovieModal" 
                 movie={movie} 
                 removeMovie={removeMovie} 
-                styles="bg-rose-800 px-4 py-1.5 rounded-lg text-sm text-white hover:bg-rose-600 transition"/>
+                styles="bg-brand-strong px-4 py-1.5 rounded-lg text-sm text-white hover:bg-brand-hover transition"/>
  
             </div>)))  
             } 

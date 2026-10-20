@@ -1,17 +1,19 @@
 import React from 'react'
 import ButtonFuction from '../../components/Button'
 
-const Header = ({ setOpen, movies }) => {
+const Header = ({ movies, panel }) => {
+  const { setOpen } = panel
+  
   return (
     <>
-      <header className="flex justify-between items-center px-10 py-5 bg-momos text-stone-100 border-b border-rose-950 shadow-lg">
+      <header className="flex justify-between items-center px-10 py-5 bg-surface text-stone-100 border-b border-rose-950 shadow-lg">
       
       <div className="flex items-center gap-3">
 
         <div className=" h-10 rounded-lg bg-rose-700 flex items-center justify-center shadow-md">
           <span className="text-xl tracking-tight "> Logo maquiavelico</span>
         </div>
-      
+    
       <h1 className="text-3xl font-extrabold tracking-tight">Movies</h1>
       <p className="text-xs text-stone-400">YOUR WATCHLIST</p>
       </div>

@@ -1,7 +1,39 @@
 @import "tailwindcss";
 
 @theme {
-  --color-momos: #09090b;
-  --when: #1e3a8a;
+  --color-brand: #be123c;
+  --color-brand-strong: #881337;
+  --color-brand-hover: #f43f5e;
+  --color-brand-highlight: #fda4af;
+  --color-brand-pale: #ffe4e6;
+  --color-brand-deep: #4c0519;
+
+  --color-surface: #09090b;
+  --color-surface-raised: #18181b;
+  --color-surface-input: #27272a;
+  --color-surface-card: #3f3f46;
+  --color-surface-warm: #3f3035;
+
+  --color-foreground: #f5f5f4;
+  --color-foreground-strong: #e7e5e4;
+  --color-foreground-soft: #d6d3d1;
+  --color-foreground-muted: #a8a29e;
+  --color-foreground-subtle: #78716c;
+  --color-placeholder: #a1a1aa;
+
+  --color-border-input: #52525b;
+  --background-image-brand-gradient: radial-gradient(circle at center, var(--color-brand), var(--color-brand-strong) 75%);
+  --background-image-brand-gradient-hover: radial-gradient(circle at center, var(--color-brand-hover), var(--color-brand) 75%);
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
   --font-display: 'Inter', sans-serif;
+}
+
+@layer components {
+  .movie-card-bg {
+    background: radial-gradient(circle at center, var(--color-surface-card), var(--color-surface-raised) 75%);
+  }
+
+  .watchlist-item-bg {
+    background: radial-gradient(circle at center, var(--color-surface-warm), var(--color-surface-raised) 75%);
+  }
 }

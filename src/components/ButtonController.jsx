@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ButtonController = (opcion, movie,  setOpen, movieToggle, removeMovie, vaciarLista) => {
+const ButtonController = (opcion, movie,  setOpen, movieToggle, removeMovie, vaciarLista, paginaSiguiente, paginaAnterior) => {
 
     switch (opcion) {
 
@@ -20,6 +20,16 @@ const ButtonController = (opcion, movie,  setOpen, movieToggle, removeMovie, vac
             if (window.confirm('¿Querés vaciar toda la lista?')) {
                 vaciarLista()
             }
+            break
+
+        case 'paginaAnterior':
+            paginaAnterior()
+            console.log('paginaAnterior')
+            break
+
+        case 'paginaSiguiente':
+            paginaSiguiente()
+            console.log('paginaSiguiente')
             break
 
         default:
