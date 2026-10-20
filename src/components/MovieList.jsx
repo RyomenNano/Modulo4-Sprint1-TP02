@@ -21,10 +21,10 @@ const MovieList = ({ movies, movieToggle, busqueda, peliculasAlmacenadas, pagina
   const peliculasPagina = peliculasFiltradas.slice(indiceInicio, indiceInicio + peliculasPorPagina)
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <div className="max-w-7xl mx-auto px-6 py-10">
+    <div className="flex min-w-0 flex-col items-center justify-center">
+      <div className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 sm:py-10">
 
-        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 min-[420px]:grid-cols-2 sm:gap-6 md:grid-cols-3 xl:grid-cols-4">
 
           {peliculasFiltradas.length > 0 ? (
 
@@ -56,17 +56,17 @@ const MovieList = ({ movies, movieToggle, busqueda, peliculasAlmacenadas, pagina
         </div>
 
         {peliculasFiltradas.length > 0 && (
-          <div className="flex items-center justify-center gap-4 mt-8">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-4">
 
             <ButtonFuction
               texto="Anterior"
               opcion="paginaAnterior"
               paginaAnterior={paginaAnterior}
               disabled={paginaActual === 1}
-              styles="px-6 py-2.5 rounded-xl border border-rose-500/50 bg-white/5 text-stone-200 font-semibold backdrop-blur-sm hover:bg-rose-500/15 hover:border-rose-400 hover:text-white transition duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
+              styles="rounded-xl border border-rose-500/50 bg-white/5 px-4 py-2.5 text-sm font-semibold text-stone-200 backdrop-blur-sm transition duration-300 hover:border-rose-400 hover:bg-rose-500/15 hover:text-white disabled:cursor-not-allowed disabled:opacity-40 sm:px-6 sm:text-base"
             />
 
-            <span className="text-stone-200">
+            <span className="px-1 text-sm text-stone-200 sm:text-base">
               Página {paginaActual} de {totalPaginas}
             </span>
 
@@ -75,7 +75,7 @@ const MovieList = ({ movies, movieToggle, busqueda, peliculasAlmacenadas, pagina
               opcion="paginaSiguiente"
               paginaSiguiente={paginaSiguiente}
               disabled={paginaActual >= totalPaginas}
-              styles="px-6 py-2.5 rounded-xl border border-rose-500/50 bg-white/5 text-stone-200 font-semibold backdrop-blur-sm hover:bg-rose-500/15 hover:border-rose-400 hover:text-white transition duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
+              styles="rounded-xl border border-rose-500/50 bg-white/5 px-4 py-2.5 text-sm font-semibold text-stone-200 backdrop-blur-sm transition duration-300 hover:border-rose-400 hover:bg-rose-500/15 hover:text-white disabled:cursor-not-allowed disabled:opacity-40 sm:px-6 sm:text-base"
             />
 
           </div>

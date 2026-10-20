@@ -2,7 +2,7 @@ import useLocalStorage from "./useLocalStorage"
 
 function useMyList(){
 
-    const [movies, setMovies] = useLocalStorage('watchlist', []) 
+    const [movies, setMovies, removeItem] = useLocalStorage('watchlist', []) 
 
     const removeMovie = (id) => {
         const updated = movies.filter(movie => movie.id !== id)
@@ -11,7 +11,7 @@ function useMyList(){
 
     const vaciarLista = () => {
         setMovies([])
-        localStorage.removeItem('watchlist')
+        removeItem()
     }
 
     const movieToggle = (movie) => {

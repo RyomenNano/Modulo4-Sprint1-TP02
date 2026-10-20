@@ -6,17 +6,17 @@ const Main = ({ movies, panel, movieToggle, removeMovie, vaciarLista, busqueda, 
   const {open, setOpen} = panel
   return (
     <>
-    <main className="bg-gradient-to-b from-zinc-900 via-neutral-950 to-black min-h-screen">
+    <main className="min-h-screen min-w-0 bg-gradient-to-b from-zinc-900 via-neutral-950 to-black">
         <div>
           <input 
             type="text" 
             placeholder="Buscar películas" 
             value={busqueda} 
             onChange={(e) => setBusqueda(e.target.value)} 
-            className="w-full max-w-xl mx-auto block px-4 py-3 bg-surface-input border border-border-input text-foreground placeholder:text-placeholder rounded-l outline-none focus:border-brand-hover focus:ring-2 focus:ring-brand-hover/20 transition-all duration-200 shadow-md"
+            className="mx-auto mt-4 block w-[calc(100%-2rem)] max-w-xl rounded-lg border border-border-input bg-surface-input px-4 py-3 text-foreground placeholder:text-placeholder shadow-md outline-none transition-all duration-200 focus:border-brand-hover focus:ring-2 focus:ring-brand-hover/20 sm:mt-6"
           />
         </div>
-        <div className='flex items-center justify-center'>
+        <div className='flex min-w-0 items-center justify-center'>
             <MovieList
             movies={movies} 
             movieToggle={movieToggle} 

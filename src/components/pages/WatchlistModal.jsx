@@ -21,10 +21,10 @@ const WatchlistModal = ({ setOpen, movies, removeMovie, vaciarLista }) => {
 }, [setOpen])
 
   return (
-<div className="bg-surface text-foreground rounded-2xl w-[90%] max-w-5xl shadow-2xl border border-brand-strong/40"> 
-      <div className="flex justify-between items-center p-5 border-b border-brand-strong/40"> 
+<div className="flex max-h-[90vh] w-[calc(100%-2rem)] max-w-5xl flex-col overflow-hidden rounded-2xl border border-brand-strong/40 bg-surface text-foreground shadow-2xl">
+      <div className="flex items-center justify-between border-b border-brand-strong/40 p-3 sm:p-5">
  
-        <h2 className="font-bold text-xl tracking-wide"> My Watchlist</h2> 
+        <h2 className="text-lg font-bold tracking-wide sm:text-xl"> My Watchlist</h2>
 
         <ButtonFunction texto="Cerrar" opcion="alternarModal" setOpen={setOpen} styles="text-foreground-muted hover:text-brand-hover text-xl transition"/>
 
@@ -34,9 +34,9 @@ const WatchlistModal = ({ setOpen, movies, removeMovie, vaciarLista }) => {
                 texto="vaciar" 
                 opcion="vaciarLista" 
                 vaciarLista={vaciarLista}  
-                styles="float-right mt-5 mr-4 mb-2 bg-brand-strong/70 border border-brand/60 px-5 py-2 rounded-md text-sm text-brand-pale hover:bg-brand-hover hover:border-brand-hover transition duration-200"/>
+                styles="ml-auto mr-3 mt-3 block rounded-md border border-brand/60 bg-brand-strong/70 px-4 py-2 text-sm text-brand-pale transition duration-200 hover:border-brand-hover hover:bg-brand-hover sm:mr-4 sm:mt-5 sm:px-5"/>
    
-      <div className="p-5 space-y-4 h-[750px] overflow-y-auto"> 
+      <div className="min-h-0 flex-1 space-y-3 overflow-y-auto p-3 sm:space-y-4 sm:p-5">
    
         {movies.length == 0 ?
         <div className="flex flex-col items-center justify-center py-20 text-center">
@@ -52,11 +52,11 @@ const WatchlistModal = ({ setOpen, movies, removeMovie, vaciarLista }) => {
         
         
         : ( movies.map((movie) => ( 
-            <div key={movie.id} className="watchlist-item-bg flex items-center justify-between p-4 rounded-xl border border-brand-strong/50"> 
+            <div key={movie.id} className="watchlist-item-bg flex flex-col items-start gap-3 rounded-xl border border-brand-strong/50 p-3 min-[420px]:flex-row min-[420px]:items-center min-[420px]:justify-between sm:p-4">
                
-              <div className="flex items-center gap-4"> 
-                <img src={movie.image} alt={movie.title} className="w-24 h-32 object-cover rounded"/> 
-                <p className="font-medium text-foreground-strong">{movie.title}</p> 
+              <div className="flex min-w-0 items-center gap-3 sm:gap-4">
+                <img src={movie.image} alt={movie.title} className="h-24 w-16 shrink-0 rounded object-cover sm:h-32 sm:w-24"/>
+                <p className="break-words font-medium text-foreground-strong">{movie.title}</p>
               </div> 
 
               <ButtonFunction 
@@ -64,7 +64,7 @@ const WatchlistModal = ({ setOpen, movies, removeMovie, vaciarLista }) => {
                 opcion="removeMovieModal" 
                 movie={movie} 
                 removeMovie={removeMovie} 
-                styles="bg-brand-strong px-4 py-1.5 rounded-lg text-sm text-white hover:bg-brand-hover transition"/>
+                styles="self-end rounded-lg bg-brand-strong px-4 py-1.5 text-sm text-white transition hover:bg-brand-hover min-[420px]:self-auto"/>
  
             </div>)))  
             } 

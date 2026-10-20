@@ -1,4 +1,4 @@
-# Movies — Mi Watchlist
+Movies — Mi Watchlist
 
 ## 1. Descripción del proyecto
 

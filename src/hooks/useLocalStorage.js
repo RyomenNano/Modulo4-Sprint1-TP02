@@ -14,6 +14,14 @@ function useLocalStorage(key, initialValue) {
         }
     })
 
+    const removeItem = () => {
+        try {
+            localStorage.removeItem(key)
+        } catch (error) {
+            console.error('Error al eliminar del localStorage:', error)
+        }
+    }
+
     useEffect(() => {
         try {
             if (Array.isArray(valor)){
@@ -48,7 +56,7 @@ function useLocalStorage(key, initialValue) {
         return () => window.removeEventListener('storage', sincronizar)
     }, [key, initialValue])
 
-    return [valor, setValor]
+    return [valor, setValor, removeItem]
 }
 
 export default useLocalStorage
